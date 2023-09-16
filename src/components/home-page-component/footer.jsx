@@ -20,7 +20,7 @@ const Footer = () => {
         </div>
         <div className="w-[366px] h-[23px] flex justify-center items-center mx-auto mt-16 pb-8 ">
           <p className="text-[#6B7280] font-semibold text-[1.125rem] text-center">
-            &copy; 2021 MovieBox by Adriana Eka Prayudha
+            &copy; 2023 MovieBox by AbdQudus
           </p>
         </div>
       </div>

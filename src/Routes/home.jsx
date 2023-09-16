@@ -29,9 +29,7 @@ const Home = () => {
         "https://api.themoviedb.org/3/movie/top_rated?api_key=0675fe991f3ca4e6f5b5f9efb36add15&language=en-US&page=1";
       try {
         const movies = await fetchData(url, "featured-movies", "results");
-        const randomIndex = Math.floor(Math.random() * movies.length);
-        heroRef.current = movies[randomIndex];
-        console.log(randomIndex);
+        heroRef.current = movies[15];
         setMovies(movies);
         setIsLoading(false);
       } catch (error) {
