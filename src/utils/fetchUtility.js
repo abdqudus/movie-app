@@ -17,6 +17,7 @@ export async function fetchData(url, cacheKey, prop) {
       .then((data) => {
         if (prop) {
           localStorage.setItem(cacheKey, JSON.stringify(data[prop]));
+          data = data[prop];
         } else {
           localStorage.setItem(cacheKey, JSON.stringify(data));
         }
@@ -24,7 +25,7 @@ export async function fetchData(url, cacheKey, prop) {
         setTimeout(() => {
           localStorage.removeItem(cacheKey);
         }, 1800000);
-        return data[prop];
+        return data;
       })
       .catch((error) => {
         console.error("Error:", error);

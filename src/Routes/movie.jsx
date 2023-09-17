@@ -16,11 +16,13 @@ const Movie = () => {
     error: "",
   });
   const { movie, isLoading, error } = appState;
+  console.log(movie);
   useEffect(() => {
     const getMovie = async () => {
       const url = `https://api.themoviedb.org/3/movie/${id}?api_key=0675fe991f3ca4e6f5b5f9efb36add15&language=en-US`;
       try {
         const movie = await fetchData(url, id);
+        console.log(movie);
         setAppState((state) => ({ ...state, movie: movie }));
       } catch (error) {
         setAppState((state) => ({ ...state, error }));
