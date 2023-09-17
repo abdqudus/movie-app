@@ -18,8 +18,9 @@ const Home = () => {
 
     if (movies) {
       setMovies(movies);
+    } else {
+      setNotFound(true);
     }
-    setNotFound(true);
     setIsLoading(false);
   };
   useEffect(() => {

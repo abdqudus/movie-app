@@ -43,7 +43,7 @@ const Movie = () => {
         <SideNav />
       </aside>
       <main className="bg-white p-4 grid lg:grid-cols-movie-grid lg:grid-rows-movie-rows">
-        <Video imagePath={movie.backdrop_path} />
+        <Video imagePath={movie.backdrop_path || movie.poster_path} />
         <Synopsis
           overview={movie.overview}
           runtime={movie.runtime}

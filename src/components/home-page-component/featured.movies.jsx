@@ -5,7 +5,6 @@ import MovieCard from "./movie.card";
 import { Link } from "react-router-dom";
 const FeaturedMovies = ({ movies }) => {
   const [numberOfMovies, setNumberOfMovies] = useState(10);
-  console.log(movies);
   const handleNoOfMovies = () => {
     if (numberOfMovies == 10) {
       setNumberOfMovies(20);
@@ -35,14 +34,23 @@ const FeaturedMovies = ({ movies }) => {
       </div>
       <div className="grid grid-cols-grid-cols gap-x:2 sm:gap-x-4 gap-y-16 ">
         {movies
-          .filter((m, i) => i !== 9 && i <= numberOfMovies)
+          .filter(
+            (m, i) =>
+              i !== 9 &&
+              i <= numberOfMovies &&
+              (m.backdrop_path || m.poster_path)
+
+            // I filter out the one whose index is 9 cos i used it for the cover photo already.
+            // I filtered whatever is not within a numeric range cos of show more and show less functionality
+            // I also filtered whatever doesn't have any picture within it
+          )
           .map((movie, i) => {
             const popularity = Number(movie.popularity.toFixed(1));
             const voteAverage = Number(movie.vote_average) * 10;
             return (
               <Link key={movie.id} to={`movies/${movie.id}`}>
                 <MovieCard
-                  imgPath={movie.backdrop_path}
+                  imgPath={movie.backdrop_path || movie.poster_path}
                   title={movie.original_title}
                   voteAverage={voteAverage}
                   popularity={popularity}

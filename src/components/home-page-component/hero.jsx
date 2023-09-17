@@ -2,7 +2,6 @@ import { useState } from "react";
 import Logo from "../../img/MovieBox.png";
 import { BsSearch, BsPlayCircle } from "react-icons/bs";
 const Hero = ({ hero, handleSearch }) => {
-  console.log(hero);
   const [movie, setMovie] = useState("");
   const popularity = Number(hero.popularity.toFixed(1));
   const voteAverage = Number(hero.vote_average) * 10;
