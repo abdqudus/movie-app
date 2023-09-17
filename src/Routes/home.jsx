@@ -16,7 +16,7 @@ const Home = () => {
     setIsLoading(true);
     const movies = await fetchData(url, movie, "results");
 
-    if (movies) {
+    if (movies.length) {
       setMovies(movies);
     } else {
       setNotFound(true);
