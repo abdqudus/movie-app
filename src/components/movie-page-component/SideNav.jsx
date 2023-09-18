@@ -1,10 +1,7 @@
 import React from "react";
 import TV from "../../img/tv.png";
-import MOVIEPROJECTOR from "../../img/Movie Projector.png";
-import TVSHOW from "../../img/TV Show.png";
-import UPCOMING from "../../img/Calendar.png";
 import LOGOUT from "../../img/Logout.png";
-import HOME from "../../img/Home.png";
+import { navigations } from "../../data";
 import { Link } from "react-router-dom";
 const SideNav = () => {
   return (
@@ -15,24 +12,22 @@ const SideNav = () => {
           Movie Box
         </p>
       </div>
-      <Link className="w-full" to="/">
-        <div className="flex transition cursor-pointer hover:bg-[#f8e7eb] hover:border-r-[3px] border-r-[#BE123C] w-full items-center justify-center p-4 gap-4 text-[#666666] font-semibold ">
-          <img alt="home" src={HOME} />
-          <p className="hidden lg:block">Home</p>
-        </div>
-      </Link>
-      <div className="flex  transition cursor-pointer items-center hover:bg-[#f8e7eb]  bg-[#f8e7eb] border-r-[3px] border-r-[#BE123C] w-full p-4 justify-center gap-4 text-[#666666] font-semibold ">
-        <img alt="movies" src={MOVIEPROJECTOR} />
-        <p className="hidden lg:block">Movies</p>
-      </div>
-      <div className="flex transition cursor-pointer hover:bg-[#f8e7eb] hover:border-r-[3px] border-r-[#BE123C]  items-center w-full justify-center p-4 gap-4 text-[#666666] font-semibold ">
-        <img alt="tv series" src={TVSHOW} />
-        <p className="hidden lg:block">TV series</p>
-      </div>
-      <div className="flex  transition cursor-pointer hover:bg-[#f8e7eb] hover:border-r-[3px] border-r-[#BE123C]  items-center w-full justify-center p-4 gap-4 text-[#666666] font-semibold ">
-        <img alt="upcoming movies" src={UPCOMING} />
-        <p className="hidden lg:block">Upcoming</p>
-      </div>
+      {navigations.map((item) => {
+        const active = item.text == "Movies" ? true : false;
+        return (
+          <Link key={item.text} className="w-full" to={item.href}>
+            <div
+              className={`flex transition cursor-pointer ${
+                active ? " border-r-[3px] bg-[#f8e7eb]" : ""
+              } hover:bg-[#f8e7eb] hover:border-r-[3px] border-r-[#BE123C] w-full items-center justify-center p-4 gap-4 text-[#666666] font-semibold`}
+            >
+              <img alt={item.alt} src={item.img} />
+              <p className="hidden lg:block">{item.text}</p>
+            </div>
+          </Link>
+        );
+      })}
+
       <div className="hidden lg:block border-[1px] rounded-[10px] border-[#BE123C]">
         <div className="rounded-[10px] w-[170px] h-[210px] bg-[#F8E7EB] p-4">
           <p className="font-semibold">
