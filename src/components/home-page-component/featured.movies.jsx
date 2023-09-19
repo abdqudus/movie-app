@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import Poster from "../home-page-component/movie-card-components/Poster";
+import AdditionalDetails from "../home-page-component/movie-card-components/additional-details";
 import More from "../../img/more.png";
 import MovieCard from "./movie.card";
 import { Link } from "react-router-dom";
@@ -45,17 +46,13 @@ const FeaturedMovies = ({ movies }) => {
             // I also filtered whatever doesn't have any picture within it
           )
           .map((movie, i) => {
-            const popularity = Number(movie.popularity.toFixed(1));
-            const voteAverage = Number(movie.vote_average) * 10;
             return (
               <Link key={movie.id} to={`movies/${movie.id}`}>
                 <MovieCard
-                  imgPath={movie.backdrop_path || movie.poster_path}
-                  title={movie.original_title}
-                  voteAverage={voteAverage}
-                  popularity={popularity}
+                  movie={movie}
                   index={i}
-                  releaseDate={movie.release_date}
+                  poster={<Poster />}
+                  additionalDetails={<AdditionalDetails />}
                 />
               </Link>
             );

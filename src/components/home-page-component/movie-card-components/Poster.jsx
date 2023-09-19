@@ -1,6 +1,14 @@
 import React from "react";
 import Like from "../../../img/Icon.png";
-const Poster = ({ releaseDate, imgPath, title }) => {
+import { useMovieContext } from "../../../contexts/movie-context";
+const Poster = () => {
+  const movie = useMovieContext();
+  const {
+    original_title: title,
+    poster_path: imgPath,
+    release_date: releaseDate,
+  } = movie;
+  console.log(movie);
   return (
     <div className="w-[15.625rem] h-[23.125rem] relative">
       <img
