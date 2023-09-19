@@ -8,7 +8,6 @@ const Poster = () => {
     poster_path: imgPath,
     release_date: releaseDate,
   } = movie;
-  console.log(movie);
   return (
     <div className="w-[15.625rem] h-[23.125rem] relative">
       <img
